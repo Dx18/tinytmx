@@ -64,6 +64,12 @@ namespace tinytmx
         /// Returns the global id of the first tile.
         [[nodiscard]] int GetFirstGid() const { return first_gid; }
 
+        /// Get the filename used to read the tileset if any.
+        [[nodiscard]] std::string const &GetFilename() const { return file_name; }
+
+        /// Get the path to the directory of the tileset file if any.
+        [[nodiscard]] std::string const &GetFilepath() const { return file_path; }
+
         /// Returns the name of the tileset.
         [[nodiscard]] std::string const &GetName() const { return name; }
 
@@ -118,6 +124,9 @@ namespace tinytmx
 
     private:
         int first_gid;
+
+        std::string file_name;
+        std::string file_path;
 
         uint32_t tile_width;
         uint32_t tile_height;

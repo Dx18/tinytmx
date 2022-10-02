@@ -93,6 +93,15 @@ namespace tinytmx {
             std::string const &fileName = file_path + source_name;
             tileset_doc.LoadFile(fileName.c_str());
 
+            auto const lastSlash = fileName.find_last_of('/');
+
+            // Get the directory of the file using substring.
+            if (lastSlash != std::string::npos) {
+                this->file_path = fileName.substr(0, lastSlash + 1);
+            }
+
+            file_name = fileName;
+
             if (tileset_doc.ErrorID() != 0) {
                 fprintf(stderr, "failed to load tileset file '%s'\n", fileName.c_str());
                 return;
