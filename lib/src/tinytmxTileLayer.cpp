@@ -175,7 +175,7 @@ namespace tinytmx {
 
             // Convert to an unsigned.
             //sscanf(gidText, "%u", &gid);
-            gid = std::strtoul(gidText, nullptr, 10);
+            gid = gidText == nullptr ? 0 : std::strtoul(gidText, nullptr, 10);
 
             // Find the tileset index.
             int const tilesetIndex = map->FindTilesetIndex(gid);
